@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Lecture14 {
     public static void main(String[] args) {
         System.out.println("Hello from lecture 14");
@@ -7,19 +9,27 @@ class Lecture14 {
         // 14. When this new version of the class fills to its capacity, it resizes.
         // How much does it grow? Why choose this growth rate, rather than increasing
         // the capacity by a single element or other constant amount?
+        // The resize is the capacity multiplied by two. This is much less computationally expensive than
+        // resizing for a single element because you won't need to resize as often and resizing is expensive.
 
         // 15. What is the benefit of adding an iterator to the list class?
+        // Iterators make traversal easier because they dont reveal the underlying structure such as manual index based iteration.
 
         // 16. What state does the array list iterator store?
+        // The iterator maintains a current index variable to keep track of its position.
+        // The iterator needs a reference to the array list it is iterating over.
 
         // 17. How does the array list iterator know if there are more elements left to
         // examine?
         // What does it do if the client tries to examine a next element but there are
         // none left to examine?
+        // The iterator uses the current index to ensure it is smaller than the size of the list.
+        // If there are no elements left, the iterator will throw a NoSuchElementException
 
         // 18. What is a precondition of the iterator’s remove method?
         // How does the iterator enforce this precondition, and what does it do if the
         // precondition is violated?
+        // The next() method must be called before remove() and remove() cannot be called consecutively you must use next().
 
         // 19. Write a method called sum that returns the sum of all values in the list.
         // For example, if a variable called list stores [11, –7, 3, 42, 0, 14], the
@@ -55,5 +65,15 @@ class Lecture14 {
         // Exercises:
         // None
 
+    }
+
+
+}
+
+class ArrayIntListIterator {
+    private int position;
+
+    public ArrayIntListIterator() {
+        this.position = 0;
     }
 }
